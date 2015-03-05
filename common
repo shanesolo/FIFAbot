@@ -1,71 +1,70 @@
-def get_current_threads(subreddit,limit=200):
-    """
-    Gets the hot threads in a subreddit
-    :param subreddit: suv
-    :param limit:
-    :return: threads from praw
-    """
-    current_threads = []
-    for submission in subreddit.get_hot(limit=limit):
-        current_threads.append(submission)
-    return current_threads
 
-def get_wiki_source(subreddit,wiki_name):
+def get_wiki_source(subreddit,wiki_name1):
     """
     Returns content of a wiki page to be used for a post
     :param subreddit: subreddit the wiki is on
-    :param wiki_name: name of the wiki example: /r/<subreddit>/wiki/ffbot/<wiki_name>
+    :param wiki_name: name of the wiki example: /r/<subreddit>/wiki/fifabot/<wiki_name>
     :return: content of the wiki page
     """
     try:
-        content = subreddit.get_wiki_page('/r/shane_solo/wiki/fifabot/%s' % wiki_name).content_md
+        content = subreddit.get_wiki_page('fifabot/%s' % wiki_name1).content_md
         content = content.replace('&lt;','<').replace('&gt;','>')
     except:
         content = "No Wiki Found"
     return content
 
-def get_unanswered_comments(thread,number=1):
+def get_wiki_source(subreddit,wiki_name2):
     """
-    Get comments that have no responses
-    :param thread: thread from PRAW
-    :param number: Number of replies required to count it as answered
-    :return: comments that havent been replied to
+    Returns content of a wiki page to be used for a post
+    :param subreddit: subreddit the wiki is on
+    :param wiki_name: name of the wiki example: /r/<subreddit>/wiki/fifabot/<wiki_name>
+    :return: content of the wiki page
     """
-    unanswered_comments = []
-    if hasattr(thread,'comments'):
-        for comment in thread.comments:
-            count = 0
-            for reply in comment.replies:
+    try:
+        content = subreddit.get_wiki_page('fifabot/%s' % wiki_name2).content_md
+        content = content.replace('&lt;','<').replace('&gt;','>') 
+    except:
+        content = "No Wiki Found"
+    return content
 
-                count += 1
-            if count <= number and str(comment.banned_by) == 'None':
-                unanswered_comments.append(comment)
-    return unanswered_comments
+def get_wiki_source(subreddit,wiki_name3):
+    """
+    Returns content of a wiki page to be used for a post
+    :param subreddit: subreddit the wiki is on
+    :param wiki_name: name of the wiki example: /r/<subreddit>/wiki/fifabot/<wiki_name>
+    :return: content of the wiki page
+    """
+    try:
+        content = subreddit.get_wiki_page('fifabot/%s' % wiki_name3).content_md
+        content = content.replace('&lt;','<').replace('&gt;','>') 
+    except:
+        content = "No Wiki Found"
+    return content
 
-def get_comment_replies(thread):
+def get_wiki_source(subreddit,wiki_name4):
     """
-    Get comments that have replied to other users in thread
-    :param thread:  thread
-    :return: comments that are replies
+    Returns content of a wiki page to be used for a post
+    :param subreddit: subreddit the wiki is on
+    :param wiki_name: name of the wiki example: /r/<subreddit>/wiki/fifabot/<wiki_name>
+    :return: content of the wiki page
     """
-    answered_comments = []
-    if hasattr(thread,'comments'):
-        for comment in thread.comments:
-            if len(comment.replies) > 0:
-                for reply in comment._replies:
-                    answered_comments.append(reply)
-    return answered_comments
-
-def get_numbered_helped(comment_replies,author):
+    try:
+        content = subreddit.get_wiki_page('fifabot/%s' % wiki_name4).content_md
+        content = content.replace('&lt;','<').replace('&gt;','>') 
+    except:
+        content = "No Wiki Found"
+    return content
+    
+def get_wiki_source(subreddit,wiki_name5):
     """
-    Get the number of replies a user has helped others
-    :param comment_replies: replies from get_comment_replies
-    :param author: author name
-    :return: int of how many times they've helped others
+    Returns content of a wiki page to be used for a post
+    :param subreddit: subreddit the wiki is on
+    :param wiki_name: name of the wiki example: /r/<subreddit>/wiki/fifabot/<wiki_name>
+    :return: content of the wiki page
     """
-    number_helped = 0
-    for reply in comment_replies:
-        if str(reply.author) == str(author):
-            number_helped += 1
-    return number_helped
-
+    try:
+        content = subreddit.get_wiki_page('fifabot/%s' % wiki_name5).content_md
+        content = content.replace('&lt;','<').replace('&gt;','>') 
+    except:
+        content = "No Wiki Found"
+    return content
