@@ -4,7 +4,7 @@ from common import *
 
 # Reddit init
 r = praw.Reddit(user_agent='FIFAbot | maintained by /u/shane_solo for /r/FIFA')
-r.login('FIFAbot', 'PASSWORD HERE')
+r.login('FIFAbot', 'PASSWORD')
 
 Day = date.weekday(date.today())
 current_date = time.strftime("%m/%d/%y")
@@ -14,34 +14,48 @@ wiki_name2 = "squadbuilder"
 wiki_name3 = "market"
 wiki_name4 = "packs"
 wiki_name5 = "ifwatch"
+wiki_name6 = "rant"
 
-sub_name = "fifa"
+sub_name = "FIFA"
 subreddit = r.get_subreddit(sub_name)
 body_content1 = get_wiki_source(subreddit,wiki_name1)
 body_content2 = get_wiki_source(subreddit,wiki_name2)
 body_content3 = get_wiki_source(subreddit,wiki_name3)
 body_content4 = get_wiki_source(subreddit,wiki_name4)
 body_content5 = get_wiki_source(subreddit,wiki_name5)
+body_content6 = get_wiki_source(subreddit,wiki_name6)
 
 #Normal Daily Threads
-if (Day == 0 or Day == 1 or Day == 2 or Day == 3 or Day == 4):
-    sub1 = r.submit('fifa', '/r/FIFA: The Daily Squad Thread: (%s)' % current_date, text='%s' % body_content2)
-    sub2 = r.submit('fifa', '/r/FIFA: The Daily Market Guide Thread: (%s)' % current_date, text='%s' %body_content3)
-    sub3 = r.submit('fifa', '/r/FIFA: The Daily Bitch/Brag Pack Thread: (%s)' % current_date, text='%s' % body_content4)
+if (Day == 0 or Day == 2 or Day == 3 or Day == 4):
+    sub1 = r.submit('FIFA', '/r/FIFA: The Daily Squad Thread: (%s)' % current_date, text='%s' % body_content2)
+    sub2 = r.submit('FIFA', '/r/FIFA: The Daily Market Guide Thread: (%s)' % current_date, text='%s' %body_content3)
+    sub3 = r.submit('FIFA', '/r/FIFA: The Daily Bitch/Brag Pack Thread: (%s)' % current_date, text='%s' % body_content4)
 
 #Normal INDEX
-if (Day == 0 or Day == 1 or Day == 2 or Day == 3 or Day == 4):
-    linkSubmission = r.submit('fifa', '/r/FIFA: The Daily Index Thread -- %s' % current_date2, text='**Welcome to the /r/FIFA Daily Index Thread** \n== \n \n See below for the daily threads for Ultimate Team squad building, squad critiques, market advice, and pack pulls of the day. Other submissions that fit these categories will be deleted without warning. \n \n [**The Daily Squad Thread**](' + sub1.permalink + '?sort=new) **REQUESTS! REVIEWS! CRITIQUES!**\n== \n \n [**The Daily Market Guide Thread**](' + sub2.permalink + '?sort=new) \n== \n \n [**The Daily Bitch/Brag Pack Thread**](' + sub3.permalink + '?sort=new) \n== \n \n %s' % body_content1)
+if (Day == 0 or Day == 2 or Day == 3 or Day == 4):
+    linkSubmission = r.submit('FIFA', '/r/FIFA: The Daily Index Thread -- %s' % current_date2, text='**Welcome to the /r/FIFA Daily Index Thread** \n== \n \n See below for the daily threads for Ultimate Team squad building, squad critiques, market advice, and pack pulls of the day. Other submissions that fit these categories will be deleted without warning. \n \n [**The Daily Squad Thread**](' + sub1.permalink + '?sort=new) **REQUESTS! REVIEWS! CRITIQUES!**\n== \n \n [**The Daily Market Guide Thread**](' + sub2.permalink + '?sort=new) \n== \n \n [**The Daily Bitch/Brag Pack Thread**](' + sub3.permalink + '?sort=new) \n== \n \n %s' % body_content1)
     linkSubmission.sticky()
 
 #Add IF Watch Thread Saturday and Sunday
 if (Day == 5 or Day == 6):
-    sub1 = r.submit('fifa', '/r/FIFA: The Daily Squad Thread: (%s)' % current_date, text='%s' % body_content2)
-    sub2 = r.submit('fifa', '/r/FIFA: The Daily Market Guide Thread: (%s)' % current_date, text='%s' %body_content3)
-    sub3 = r.submit('fifa', '/r/FIFA: The Daily Bitch/Brag Pack Thread: (%s)' % current_date, text='%s' % body_content4)
-    sub4 = r.submit('fifa', '/r/FIFA: The IF Watch Thread: (%s)' % current_date, text='%s' % body_content5)
+    sub1 = r.submit('FIFA', '/r/FIFA: The Daily Squad Thread: (%s)' % current_date, text='%s' % body_content2)
+    sub2 = r.submit('FIFA', '/r/FIFA: The Daily Market Guide Thread: (%s)' % current_date, text='%s' %body_content3)
+    sub3 = r.submit('FIFA', '/r/FIFA: The Daily Bitch/Brag Pack Thread: (%s)' % current_date, text='%s' % body_content4)
+    sub4 = r.submit('FIFA', '/r/FIFA: The IF Watch Thread: (%s)' % current_date, text='%s' % body_content5)
 
 #IF Watch Thread Saturday and Sunday INDEX
 if (Day == 5 or Day == 6):
-    linkSubmission = r.submit('fifa', '/r/FIFA: The Daily Index Thread -- %s' % current_date2, text='**Welcome to the /r/FIFA Daily Index Thread** \n== \n \n See below for the daily threads for Ultimate Team squad building, squad critiques, market advice, and pack pulls of the day. Other submissions that fit these categories will be deleted without warning. \n \n [**The IF Watch Thread**](' + sub4.permalink + ') **TODAY!**\n== \n \n [**The Daily Squad Thread**](' + sub1.permalink + '?sort=new) **REQUESTS! REVIEWS! CRITIQUES!**\n== \n \n [**The Daily Market Guide Thread**](' + sub2.permalink + '?sort=new) \n== \n \n [**The Daily Bitch/Brag Pack Thread**](' + sub3.permalink + '?sort=new) \n== \n \n %s' % body_content1)
+    linkSubmission = r.submit('FIFA', '/r/FIFA: The Daily Index Thread -- %s' % current_date2, text='**Welcome to the /r/FIFA Daily Index Thread** \n== \n \n See below for the daily threads for Ultimate Team squad building, squad critiques, market advice, and pack pulls of the day. Other submissions that fit these categories will be deleted without warning. \n \n [**The IF Watch Thread**](' + sub4.permalink + ') **TODAY!**\n== \n \n [**The Daily Squad Thread**](' + sub1.permalink + '?sort=new) **REQUESTS! REVIEWS! CRITIQUES!**\n== \n \n [**The Daily Market Guide Thread**](' + sub2.permalink + '?sort=new) \n== \n \n [**The Daily Bitch/Brag Pack Thread**](' + sub3.permalink + '?sort=new) \n== \n \n %s' % body_content1)
+    linkSubmission.sticky()
+
+#Add Weekly Fucking Rant Thread Tuesday
+if (Day == 1):
+    sub1 = r.submit('FIFA', '/r/FIFA: The Daily Squad Thread: (%s)' % current_date, text='%s' % body_content2)
+    sub2 = r.submit('FIFA', '/r/FIFA: The Daily Market Guide Thread: (%s)' % current_date, text='%s' %body_content3)
+    sub3 = r.submit('FIFA', '/r/FIFA: The Daily Bitch/Brag Pack Thread: (%s)' % current_date, text='%s' % body_content4)
+    sub4 = r.submit('FIFA', '/r/FIFA: The Weekly Fucking Rant Thread: (%s)' % current_date, text='%s' % body_content6)
+
+#Weekly Fucking Rant Thread Tuesday INDEX
+if (Day == 1):
+    linkSubmission = r.submit('FIFA', '/r/FIFA: The Daily Index Thread -- %s' % current_date2, text='**Welcome to the /r/FIFA Daily Index Thread** \n== \n \n See below for the daily threads for Ultimate Team squad building, squad critiques, market advice, and pack pulls of the day. Other submissions that fit these categories will be deleted without warning. \n \n [**The Weekly Fucking Rant Thread**](' + sub4.permalink + ') **TODAY!**\n== \n \n [**The Daily Squad Thread**](' + sub1.permalink + '?sort=new) **REQUESTS! REVIEWS! CRITIQUES!**\n== \n \n [**The Daily Market Guide Thread**](' + sub2.permalink + '?sort=new) \n== \n \n [**The Daily Bitch/Brag Pack Thread**](' + sub3.permalink + '?sort=new) \n== \n \n %s' % body_content1)
     linkSubmission.sticky()
