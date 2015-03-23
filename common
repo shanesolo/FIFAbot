@@ -68,3 +68,17 @@ def get_wiki_source(subreddit,wiki_name5):
     except:
         content = "No Wiki Found"
     return content
+    
+def get_wiki_source(subreddit,wiki_name6):
+    """
+    Returns content of a wiki page to be used for a post
+    :param subreddit: subreddit the wiki is on
+    :param wiki_name: name of the wiki example: /r/<subreddit>/wiki/fifabot/<wiki_name>
+    :return: content of the wiki page
+    """
+    try:
+        content = subreddit.get_wiki_page('fifabot/%s' % wiki_name6).content_md
+        content = content.replace('&lt;','<').replace('&gt;','>') 
+    except:
+        content = "No Wiki Found"
+    return content
